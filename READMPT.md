@@ -40,11 +40,12 @@ CMD:progresso(playerid, const params[])
 ```
 
 ## 📷 Video
-https://www.youtube.com/watch?v=-6CnrRUcf98
+
+https://github.com/user-attachments/assets/26d3ed26-a75f-4dba-983d-481b4e50b5b3
 
 ## 📝 Créditos
 - Ortex - Criador do codigo.
 
 ## 🌐 Outros idiomas
-* Português
-* Inglês
+* [Português](https://github.com/dev-ortex/box-radius-progress/blob/main/READMPT.md)
+* [Inglês](https://github.com/dev-ortex/box-radius-progress/blob/main/README.md)
