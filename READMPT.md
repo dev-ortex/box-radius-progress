@@ -1,5 +1,5 @@
 # 📌 Box Radius Progress
-Uma include para Pawn que permite criar barras de progresso copm borda usando `TextDraws`. Ideal para sistemas de hud, ações de tempo ou feedback visual para jogadores.
+Uma include para Pawn que permite criar barras de progresso com borda usando `TextDraws`. Ideal para sistema de hud.
 
 ## Instalação
 
