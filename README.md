@@ -25,8 +25,7 @@ native DestroyPlayerBoxRadiusProgress(playerid, id);
 native DestroyPlayerBoxRadiusAll(playerid);
 ```
 
-> **Notes:**
->
+> [!IMPORTANT]
 > * `color`: Progress bar color.
 > * `bgcolor`: Background color.
 > * `size`: Base size of the bar.
