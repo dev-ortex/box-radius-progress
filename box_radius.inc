@@ -290,8 +290,11 @@ stock UpdatePlayerBoxRadiusProgress(playerid, id, Float:value) {
 
 stock DestroyPlayerBoxRadiusAll(playerid) {
 
-    foreach(new i: BoxRadius[playerid])
-        DestroyPlayerBoxRadiusProgress(playerid, i);   
+    for(new i; i < MAX_BOXR; i++) {
+        if(e_BoxRadiusDraw[playerid][i][E_BOXR_USED]) {
+            DestroyPlayerBoxRadiusProgress(playerid, i);
+        }
+    }
 
     return true;
 }
