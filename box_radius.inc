@@ -324,5 +324,6 @@ stock PlayerTextBoxSetPos(playerid, PlayerText:text, Float:x, Float:y, color)
     PlayerTextDrawBackgroundColor(playerid, text, 255);
     PlayerTextDrawFont(playerid, text, 4);
     PlayerTextDrawSetProportional(playerid, text, 1);
+    PlayerTextDrawShow(playerid, text);
     return 1;
 }
