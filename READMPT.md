@@ -10,7 +10,6 @@ Uma include para Pawn que permite criar barras de progresso com borda usando `Te
 ```pawn
 #include <box_radius>
 ```
-4. Instale [YSF](https://github.com/IllidanS4/YSF).
 
 ---
 
