@@ -11,7 +11,6 @@ A Pawn include to create progress bars with borders using `TextDraws`. Perfect f
 ```pawn
 #include <box_radius>
 ```
-4. Install [YSF](https://github.com/IllidanS4/YSF).
 
 
 ---
