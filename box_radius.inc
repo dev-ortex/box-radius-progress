@@ -21,12 +21,6 @@
 #endif
 #define _box_radius_included
 
-
-// Includes
-#if !defined _YSF_included
-	#include <YSF>
-#endif
-
             // Definers
 #define                 MAX_BOXR         (5)
 #define                 MAX_BOXRDRAW     (12)
@@ -248,8 +242,8 @@ stock UpdatePlayerBoxRadiusProgress(playerid, id, Float:value) {
 
             new Float:new_boxr_posy = boxr_posy_inicio + ((boxr_posy_final - boxr_posy_inicio) * value);
                                                                                           
-            PlayerTextDrawSetPos(playerid, e_BoxRadiusDraw[playerid][id][E_BOXR_TEXT][7], boxr_posx_1, new_boxr_posy); 
-            PlayerTextDrawSetPos(playerid, e_BoxRadiusDraw[playerid][id][E_BOXR_TEXT][8], boxr_posx_2, new_boxr_posy);
+            PlayerTextBoxSetPos(playerid, e_BoxRadiusDraw[playerid][id][E_BOXR_TEXT][7], boxr_posx_1, new_boxr_posy, color); 
+            PlayerTextBoxSetPos(playerid, e_BoxRadiusDraw[playerid][id][E_BOXR_TEXT][8], boxr_posx_2, new_boxr_posy, color);
 
             PlayerTextDrawTextSize(playerid, e_BoxRadiusDraw[playerid][id][E_BOXR_TEXT][7], size_ldbeat, size_ldbeat);
             PlayerTextDrawTextSize(playerid, e_BoxRadiusDraw[playerid][id][E_BOXR_TEXT][8], size_ldbeat, size_ldbeat);
@@ -262,12 +256,12 @@ stock UpdatePlayerBoxRadiusProgress(playerid, id, Float:value) {
             value = value - porcentagem;
             value = value / (100 - porcentagem);
 
+            PlayerTextBoxSetPos(playerid, e_BoxRadiusDraw[playerid][id][E_BOXR_TEXT][7], boxr_posx_1 + (value * (0.5  * size_ldbeat)), boxr_posy_final + (value * (0.84  * size_ldbeat)), color); 
+            PlayerTextBoxSetPos(playerid, e_BoxRadiusDraw[playerid][id][E_BOXR_TEXT][8], boxr_posx_2 + (value * (0.4  * size_ldbeat)), boxr_posy_final + (value * (0.84  * size_ldbeat)), color); 
+
             new Float:new_size_ldbeat = size_ldbeat - (value * size_ldbeat);
             PlayerTextDrawTextSize(playerid, e_BoxRadiusDraw[playerid][id][E_BOXR_TEXT][7], new_size_ldbeat, new_size_ldbeat);
             PlayerTextDrawTextSize(playerid, e_BoxRadiusDraw[playerid][id][E_BOXR_TEXT][8], new_size_ldbeat, new_size_ldbeat); 
-
-            PlayerTextDrawSetPos(playerid, e_BoxRadiusDraw[playerid][id][E_BOXR_TEXT][7], boxr_posx_1 + (value * (0.5  * size_ldbeat)), boxr_posy_final + (value * (0.84  * size_ldbeat))); 
-            PlayerTextDrawSetPos(playerid, e_BoxRadiusDraw[playerid][id][E_BOXR_TEXT][8], boxr_posx_2 + (value * (0.4  * size_ldbeat)), boxr_posy_final + (value * (0.84  * size_ldbeat))); 
 
             new Float:new_value = -0.665 * size_ldbeat;
             PlayerTextDrawTextSize(playerid,e_BoxRadiusDraw[playerid][id][E_BOXR_TEXT][6], 18.499 + 2.71 * size, new_value - (value * new_value));
@@ -309,9 +303,26 @@ stock DestroyPlayerBoxRadiusProgress(playerid, id) {
         e_BoxRadiusDraw[playerid][id][E_BOXR_TEXT][i] = PlayerText:INVALID_TEXT_DRAW;
     }
     e_BoxRadiusDraw[playerid][id][E_BOXRDRAW_CREATED] = false;
+
     e_BoxRadiusDraw[playerid][id][E_BOXR_USED] = false;
 
     new dsadsa[BOX_RADIUS_ENUM];
     e_BoxRadiusDraw[playerid][id] = dsadsa;
 	return true;
+}
+
+stock PlayerTextBoxSetPos(playerid, PlayerText:text, Float:x, Float:y, color)
+{
+    PlayerTextDrawDestroy(playerid, text);
+
+    text = CreatePlayerTextDraw(playerid, x, y, "LD_BEAT:chit");
+    PlayerTextDrawTextSize(playerid, text, 0, 0);
+    PlayerTextDrawAlignment(playerid, text, 1);
+    PlayerTextDrawColor(playerid, text, color);
+    PlayerTextDrawSetShadow(playerid, text, 0);
+    PlayerTextDrawSetOutline(playerid, text, 0);
+    PlayerTextDrawBackgroundColor(playerid, text, 255);
+    PlayerTextDrawFont(playerid, text, 4);
+    PlayerTextDrawSetProportional(playerid, text, 1);
+    return 1;
 }
